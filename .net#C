@@ -1,0 +1,100 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLin("CalculateGrade")
+
+        for (int i = 1; i <= 3; i++)
+        {
+            try
+            {
+                Console.Write($" score {i}\n");
+                Console.Write(" (0 - 100)score: ");
+                string scoreInput = Console.ReadLine();
+
+                Console.Write(" (0 - 100)attendance: ");
+                string attendanceInput = Console.ReadLine();
+
+                if (int.TryParse(scoreInput, out int score) && int.TryParse(attendanceInput, out int attendance))
+                {
+                    string grade = CalculateGrade(score, attendance);
+                    Console.WriteLine($"grade: {grade}\n");
+                }
+                else
+                {
+                    Console.WriteLine("isValidScore.\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"isValidScore: {ex.Message}\n");
+            }
+        }
+        Console.WriteLine("isPrime");
+        Console.Write("scoreInput, attendanceInput, numberInput");
+        string numberInput = Console.ReadLine();
+
+        if (int.TryParse(numberInput, out int number) && number > 0)
+        {
+            bool isPrime = IsPrime(number);
+            Console.WriteLine(isPrime
+        Console.WriteLine("isPrime");
+                ( " {number}.isPrime");
+               (" {number}.not isPrime");
+        }
+        else
+        {
+            Console.WriteLine ("isValidScore");
+        }
+    }
+    public static string CalculateGrade(int score, int attendance)
+    {
+        if (score < 0 || score > 100 || attendance < 0 || attendance > 100)
+        {
+            return "Invalid Input";
+        }
+
+        if (score >= 50 && attendance < 50)
+        {
+            return "Incomplete";
+        }
+        else if (score >= 90 && attendance >= 80)
+        {
+            return "A";
+        }
+        else if (score >= 80 && attendance >= 70)
+        {
+            return "B";
+        }
+        else if (score >= 70 && attendance >= 60)
+        {
+            return "C";
+        }
+        else if (score >= 60 && attendance >= 50)
+        {
+            return "D";
+        }
+        else
+        {
+            return "F";
+        }
+    }
+    public static bool IsPrime(int number)
+    {
+        if (number <= 1)
+        {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.Sqrt(number); i++)
+        {
+            if (number % i == 0)
+           {
+                return false;
+            }
+        }
+        return true;
+    }
+}
